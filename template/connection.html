@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="../static/connection.css">
+</head>
+<body>
+    <h4 class="font-weight-bold py-3 mb-4">
+        <a href="{{ url_for('main_feed') }}"><i class="fa-solid fa-left-long"></i></a> MAIN FEED
+    </h4>
+    <h1>My Connections</h1>
+    <ul>
+        {% for friend in friends %}
+            <div class="container">
+                <li><h2>{{ friend.username }}</h2> <h3>{{ friend.branch }} Engineering Student | <h3 class="mob">Mobile No: {{ friend.Mobile_No }}</h3></h3></li>
+            </div>  
+        {% endfor %}
+    </ul>
+    
+    <!-- Add more content here as needed -->
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../static/style.css">
+  <script src="../static/script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    
+   .event-card{
+    display: unset;
+   }
+
+  button {
+      background-image: linear-gradient(#42A1EC, #0070C9);
+      border: 1px solid #0077CC;
+      border-radius: 4px;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      direction: ltr;
+
+      font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: -.022em;
+      line-height: 1.47059;
+      min-width: 30px;
+      overflow: visible;
+      padding: 4px 15px;
+      text-align: center;
+      vertical-align: baseline;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      white-space: nowrap;
+  }
+
+  button:disabled {
+      cursor: default;
+      opacity: .3;
+  }
+
+  button:hover {
+      background-image: linear-gradient(#51A9EE, #147BCD);
+      border-color: #1482D0;
+      text-decoration: none;
+  }
+
+  button:active {
+      background-image: linear-gradient(#3D94D9, #0067B9);
+      border-color: #006DBC;
+      outline: none;
+  }
+
+  button:focus {
+      box-shadow: rgba(131, 192, 253, 0.5) 0 0 0 3px;
+      outline: none;
+  }
+
+  .button-7 {
+      background-color: #0095ff;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.15385;
+      margin: 0;
+      outline: none;
+      padding: 8px .8em;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: baseline;
+      white-space: nowrap;
+  }
+
+  .button-7:hover,
+  .button-7:focus {
+      background-color: #07c;
+  }
+
+  .button-7:focus {
+      box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+  }
+
+  .button-7:active {
+      background-color: #0064bd;
+      box-shadow: none;
+  }
+    .navbtn {
+      display: none;
+    }
+
+    @media (max-width: 1200px) {
+      .navbtn {
+        display: unset;
+      }
+    }
+    .card{
+      margin: 2vh;
+    }
+    h2{
+      font-size: 20px;
+      margin: 10px;
+    }
+    h1{font-size: 30px;
+      margin-top: 20px;
+    }
+    @media (max-width :715px) {
+      .event-container{
+          width:110%
+      }
+      
+  }
+  </style>
+
+</head>
+
+<body class="darkmode">
+  <nav class="main-menu">
+    <button id='navbtn' class="navbtn"><i class="fa-solid fa-bars"></i></button>
+    <div>
+      <div style="margin-top: 30px ; font-weight:700" class="user-info">
+        <!-- <img
+          src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e5a707f4-d5ac-4f30-afd8-4961ae353dbc"
+          alt="user" /> -->
+        <!-- <p>HARSHAVARDHAN KALE </p> -->
+      </div>
+
+      <ul>
+
+
+        <li class="nav-item">
+          <a id="allpost" href="{{url_for('main_feed')}}">
+            <i class=" nav-icon fa-solid fa-house"></i> <span class="nav-text">ALL POST</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a id="mypost" href="#">
+            <i class=" nav-icon fa-solid fa-hashtag"></i> <span class="nav-text">MY POST</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="{{url_for('create_post')}}">
+            <i class=" nav-icon fa-regular fa-square-plus"></i> <span class="nav-text">CREATE POST</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="{{url_for('index3')}}">
+
+            <i class=" nav-icon fa-solid fa-square-poll-vertical"></i> <span class="nav-text">POLLS</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a href="{{url_for('connect')}}">
+
+            <i class=" nav-icon fa-brands fa-nfc-symbol"></i><span class="nav-text">CONNECT</span> </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{url_for('notify')}}">
+            <i class=" nav-icon fa-regular fa-bell"></i> <span class="nav-text">NOTIFICATION</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <ul>
+      <li class="nav-item">
+        <a href="{{url_for('myprof')}}">
+          <i class=" nav-icon fa-solid fa-user"></i> <span class="nav-text">PROFILE</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{url_for('myinter')}}">
+          <i class=" nav-icon fa-solid fa-map"></i> <span class="nav-text">MY INTEREST</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{url_for('personal')}}">
+          <i class=" nav-icon fa-solid fa-user-group"></i> <span class="nav-text">CONNECTIONS</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{url_for('mypass')}}">
+          <i class=" nav-icon fa-solid fa-lock"></i> <span class="nav-text">CHANGE PASS</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{url_for('helpdisk')}}">
+          <i class=" nav-icon fa-solid fa-suitcase-medical"></i> <span class="nav-text">HELPDISK</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="{{url_for('logout')}}">
+          <i class="fa fa-right-from-bracket nav-icon"></i>
+          <span class="nav-text">LOG-OUT</span>
+        </a>
+      </li>
+    </ul>
+
+  </nav>
+
+  <section class="content">
+    <div class="left-content">
+      <div class="search-and-check">
+        <!-- <form class="search-box">
+          <input type="text" placeholder="Search event..." />
+          <i class="bx bx-search"></i>
+        </form> --> <button id="bottone1"> <a href="/create_poll">Create Poll</a></button>
+        <center>
+          <h1
+            style="font-weight: 900; font-family: 'Times New Roman', Times, serif;font-size:60px ; color:blanchedalmond ;">
+            COEP
+            CONNECT</h1>
+            <center>
+              <h1>POLLS</h1>
+              <button style="background-color: #7ef4ff; margin-right:50px" class="newpoll1" id="bottone1"> NEW
+                POLLS</button>
+            <button style="background-color: #7ef4ff;" class="polled1" id="bottone1">POLLED POLLS</button>
+    
+            </center>
+        </center>
+        <!-- <div class="interaction-control-mobile interactions">
+          <i class="fa-regular fa-envelope notified"></i>
+          <i class="fa-regular fa-bell notified"></i>
+          <div class="toggle" onclick="switchTheme()">
+            <div class="mode-icon moon">
+              <i class="bx bxs-moon"></i>
+            </div>
+            <div class="mode-icon sun hidden">
+              <i class="bx bxs-sun"></i>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+
+
+      <div class="upcoming-events">
+       
+        <div id="allfeed" class="feed1">
+          {% for poll in polls %}
+
+          <!-- <p>User ID: {{ userid }}</p>
+          <p>Polled: {{ poll.polled }}</p> -->
+          {% if userid|string in poll.polled %} 
+          <div class="event-container polled gone">
+            <div class="card event-card ">
+              <h1 class="post-head">{{ poll.question }}</h1>
+              {% for option in poll.options %}
+              <h2>{{ option.option }} ({{ option.votes }} votes)</h2>
+              {% endfor %}
+
+            </div></div>
+            {% else %}
+            <div class="event-container newpoll ">
+            <div class="card event-card ">
+              <form action="/vote/{{ poll._id }}" method="post">
+                <h1 class="post-head">{{ poll.question }}</h1>
+                
+                {% for option in poll.options %}
+              
+                  <h2> <input type="radio" name="option" value="{{ loop.index0 }}">
+                    {{ option.option }} ({{ option.votes }} votes)
+                  </h2>
+                
+                {% endfor %}
+              
+                <button class="button-7" type="submit">Vote</button>
+              </form>
+            </div></div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+      </div>
+
+
+
+    </div>
+    </div>
+  </div> <div class="right-content"> 
+    <img  src="../static/assests/new_logo.png" alt="">
+</div>
+    <script src="script.js"></script>
+    </div>
+    <script>document.addEventListener('DOMContentLoaded', function () {
+      var allpost = document.querySelectorAll('.newpoll1');
+      var mypost = document.querySelectorAll('.polled1');
+      var allfeeds = document.querySelectorAll('.newpoll'); // Change here
+      var myfeeds = document.querySelectorAll('.polled'); // Change here
+
+      mypost.forEach(function (button) {
+          button.addEventListener('click', function () {
+              myfeeds.forEach(function (feed) {
+                  feed.classList.remove("gone");
+              });
+              allfeeds.forEach(function (feed) {
+                  feed.classList.add("gone");
+              });
+          });
+      });
+
+      allpost.forEach(function (button) {
+          button.addEventListener('click', function () {
+              allfeeds.forEach(function (feed) {
+                  feed.classList.remove("gone");
+              });
+              myfeeds.forEach(function (feed) {
+                  feed.classList.add("gone");
+              });
+          });
+      });
+  });
+
+</script>
+    <script>
+      var isNavVisible = true; // Flag to track the visibility of navigation text
+
+      document.getElementById("navbtn").addEventListener("click", function () {
+        var navTexts = document.querySelectorAll(".nav-text");
+        var mainMenu = document.querySelector(".main-menu");
+
+        if (isNavVisible) {
+          navTexts.forEach(function (text) {
+            text.style.display = "none";
+          });
+
+          if (mainMenu) {
+            mainMenu.style.width = "auto"; // Change to default width or your desired value
+          }
+        } else {
+          navTexts.forEach(function (text) {
+            text.style.display = "unset";
+          });
+
+          if (mainMenu) {
+            mainMenu.style.width = "180px"; // Change the width to your desired value
+          }
+        }
+
+        isNavVisible = !isNavVisible; // Toggle the flag
+      });
+    </script>
+
+
+  </section>
+</body>
+
+</html>

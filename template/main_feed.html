@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="../static/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        .navbtn {
+            display: none;
+        }
+
+        @media (max-width: 1200px) {
+            .navbtn {
+                display: unset;
+            }
+        }
+        @media (max-width :715px) {
+            .event-container{
+                width:110%
+            }
+            
+        }
+    </style>
+
+</head>
+
+<body class="darkmode">
+    <nav class="main-menu">
+        <button id='navbtn' class="navbtn"><i class="fa-solid fa-bars"></i></button>
+        <div>
+            <div style="margin-top: 30px ; font-weight:700" class="user-info">
+                <!-- <img
+          src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e5a707f4-d5ac-4f30-afd8-4961ae353dbc"
+          alt="user" /> -->
+                <!-- <p>HARSHAVARDHAN KALE </p> -->
+            </div>
+
+            <ul>
+
+
+                <li class="nav-item">
+                    <a id="allpost" href="{{url_for('main_feed')}}">
+                        <i class=" nav-icon fa-solid fa-house"></i> <span class="nav-text">ALL POST</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="mypost" href="#">
+                        <i class=" nav-icon fa-solid fa-hashtag"></i> <span class="nav-text">MY POST</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{url_for('create_post')}}">
+                        <i class=" nav-icon fa-regular fa-square-plus"></i> <span class="nav-text">CREATE POST</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{url_for('index3')}}">
+
+                        <i class=" nav-icon fa-solid fa-square-poll-vertical"></i> <span
+                            class="nav-text">POLLS</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{url_for('connect')}}">
+
+                        <i class=" nav-icon fa-brands fa-nfc-symbol"></i><span class="nav-text">CONNECT</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url_for('notify')}}">
+                        <i class=" nav-icon fa-regular fa-bell"></i> <span class="nav-text">NOTIFICATION</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+             
+        <ul>
+            <li class="nav-item">
+                <a href="{{url_for('myprof')}}">
+                    <i class=" nav-icon fa-solid fa-user"></i> <span class="nav-text">PROFILE</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="{{url_for('personal')}}">
+                    <i class=" nav-icon fa-solid fa-user-group"></i> <span class="nav-text">CONNECTIONS</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url_for('mypass')}}">
+                    <i class=" nav-icon fa-solid fa-lock"></i> <span class="nav-text">CHANGE PASS</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url_for('helpdisk')}}">
+                    <i class=" nav-icon fa-solid fa-suitcase-medical"></i> <span class="nav-text">HELPDISK</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{url_for('logout')}}">
+                    <i class="fa fa-right-from-bracket nav-icon"></i>
+                    <span class="nav-text">LOG-OUT</span>
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <section class="content">
+        <div class="left-content">
+            <div class="search-and-check">
+                <!-- <form class="search-box">
+          <input type="text" placeholder="Search event..." />
+          <i class="bx bx-search"></i>
+        </form> -->
+                <center>
+                    <h1
+                        style="font-weight: 900; font-family: 'Times New Roman', Times, serif;font-size:60px ; color:blanchedalmond ;">
+                        COEP
+                        CONNECT</h1>
+                </center>
+                <!-- <div class="interaction-control-mobile interactions">
+                    <i class="fa-regular fa-envelope notified"></i>
+                    <i class="fa-regular fa-bell notified"></i>
+                    <div class="toggle" onclick="switchTheme()">
+                        <div class="mode-icon moon">
+                            <i class="bx bxs-moon"></i>
+                        </div>
+                        <div class="mode-icon sun hidden">
+                            <i class="bx bxs-sun"></i>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+
+
+            <div class="upcoming-events">
+                <center>
+                    <h1>FEEDS</h1>
+                </center>
+                <div id="allfeed" class="feed1">
+                    {% for data in datas %}
+                    <div class="event-container">
+                        <div class="card event-card">
+                            <!-- <div class="event-header">
+              <h2>Acoustic Serenade Under the Stars</h2>
+              <p>Skyline Amphitheater</p> -->
+                            <!-- <img
+                src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/697ef286-1104-4c6c-91d6-0b2a1e04009b"
+                alt="" /> -->
+                            <!-- <p>March 19, 8:00 PM</p> -->
+                            <!-- <i class="bx bx-heart like-btn"></i> -->
+                            <!-- </div> -->
+                            <div class="event-content">
+                                <h1> <a href="{{ url_for('dashboard1', user_id1=data.user_id) }}">
+                                        <h3 class="post-head">{{ data.username }}</h3>
+                                    </a></h1>
+                                <h3>{{ data.title }}</h3>
+                                <h2 class="temp">{{ data.subject }}</h2>
+                                <p>{{ data.description }}</p>
+                            </div>
+                            <div class="event-footer">
+                                <!-- <p style="background-color: #e48e2c">Concert</p> -->
+                                <div class="btn-group">
+                                    
+                                    <span>link:<a href="http://{{ data.links }}">{{data.links}} </a> </span>
+                                    <!-- <div class="share">
+                  <button class="share-btn">
+                    <i class="fa-solid fa-share"></i>
+                  </button>
+                  <ul class="popup">
+                    <li>
+                      <a href="#" style="color: rgb(79, 153, 213)"
+                        ><i class="bx bxl-twitter"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="#" style="color: rgb(34, 173, 34)"
+                        ><i class="bx bxl-whatsapp"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </div> -->
+
+                                </div>
+                                
+                            </div>
+                            <p>date {{ data.post_time }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+                <div id="myfeed" class="feed1 gone"> {% for data in datas %}
+                    {% if data.user_id ==user_id1 %}
+                    <div class="event-container">
+                        <div class="card event-card">
+                            <!-- <div class="event-header">
+              <h2>Acoustic Serenade Under the Stars</h2>
+              <p>Skyline Amphitheater</p> -->
+                            <!-- <img
+                src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/697ef286-1104-4c6c-91d6-0b2a1e04009b"
+                alt="" /> -->
+                            <!-- <p>March 19, 8:00 PM</p> -->
+                            <!-- <i class="bx bx-heart like-btn"></i> -->
+                            <!-- </div> -->
+                            <div class="event-content">
+                                <h1> <a href="{{ url_for('dashboard1', user_id1=data.user_id) }}">
+                                        <h3 class="post-head">{{ data.username }}</h3>
+                                    </a></h1>
+                                <h3>{{ data.title }}</h3>
+                                <h2>{{ data.subject }}</h2>
+                                <p>{{ data.description }}</p>
+                            </div>
+                            <div class="event-footer">
+                                <!-- <p style="background-color: #e48e2c">Concert</p> -->
+                                <div class="btn-group">
+                                    <span>link:<a href="{{data.links}}">{{data.links}} </a> </span>
+                                    <!-- <div class="share">
+                  <button class="share-btn">
+                    <i class="fa-solid fa-share"></i>
+                  </button>
+                  <ul class="popup">
+                    <li>
+                      <a href="#" style="color: rgb(79, 153, 213)"
+                        ><i class="bx bxl-twitter"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="#" style="color: rgb(34, 173, 34)"
+                        ><i class="bx bxl-whatsapp"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </div> -->
+
+                                </div>
+                                
+                            </div><p>date {{ data.post_time }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div> <div class="right-content"> 
+            <img src="../static/assests/new_logo.png" alt="">
+        </div>
+        <script src="script.js"></script>
+        </div>
+        <script>
+            var isNavVisible = true; // Flag to track the visibility of navigation text
+
+            document.getElementById("navbtn").addEventListener("click", function () {
+                var navTexts = document.querySelectorAll(".nav-text");
+                var mainMenu = document.querySelector(".main-menu");
+
+                if (isNavVisible) {
+                    navTexts.forEach(function (text) {
+                        text.style.display = "none";
+                    });
+
+                    if (mainMenu) {
+                        mainMenu.style.width = "auto"; // Change to default width or your desired value
+                    }
+                } else {
+                    navTexts.forEach(function (text) {
+                        text.style.display = "unset";
+                    });
+
+                    if (mainMenu) {
+                        mainMenu.style.width = "180px"; // Change the width to your desired value
+                    }
+                }
+
+                isNavVisible = !isNavVisible; // Toggle the flag
+            });
+        </script>
+
+
+    </section>
+</body>
+
+</html>
